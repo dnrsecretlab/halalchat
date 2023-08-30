@@ -19,19 +19,19 @@ def get_message():
 	return random.choice(messages)
 
 def send_message():
-	keyboard.press_and_release("y")
+	keyboard.send("y")
 	time.sleep(0.05)
 
 	keyboard.write(get_message())
 	time.sleep(0.05)
-
-	keyboard.press_and_release("enter")
+	
+	keyboard.send("enter")
 
 def main():
 	key = input("Key\n >>> ").lower()
 	while True:
-		if keyboard.is_pressed(key):
-			send_message()
+		keyboard.wait(key)
+		send_message()
 
 if __name__ == "__main__":
 	main()
